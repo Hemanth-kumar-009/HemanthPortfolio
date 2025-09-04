@@ -61,7 +61,7 @@ const HeroSection = () => {
           >
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4">
               Hi, I'm{" "}
-              <span className="text-gradient">Your Name</span>
+              <span className="text-gradient">Polavaram  Hemanth Kumar</span>
             </h1>
             <h2 className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-light">
               Electronics & Communication Engineering Student
