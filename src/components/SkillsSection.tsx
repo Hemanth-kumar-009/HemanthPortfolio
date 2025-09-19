@@ -5,25 +5,25 @@ const SkillsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [animateProgress, setAnimateProgress] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+const technicalSkills = [
+  { name: "Python", level: 80, icon: Code },
+  { name: "C Programming", level: 60, icon: Code },
+  { name: "MATLAB (Simulink, Image Processing)", level: 75, icon: Database },
+  { name: "Arduino Programming", level: 90, icon: Cpu },
+  { name: "IoT Development (Wokwi, Simulations)", level: 85, icon: Wrench },
+  { name: "Embedded Systems Design", level: 80, icon: Cpu },
+  { name: "Power BI (Data Modeling, DAX, Reports)", level: 70, icon: Database },
+];
 
-  const technicalSkills = [
-    { name: "C Programming", level: 85, icon: Code },
-    { name: "Python", level: 80, icon: Code },
-    { name: "MATLAB", level: 75, icon: Database },
-    { name: "Arduino", level: 90, icon: Cpu },
-    { name: "IoT Development", level: 85, icon: Wrench },
-    { name: "Embedded Systems", level: 80, icon: Cpu },
-    { name: "Power BI", level: 70, icon: Database },
-  ];
+const softSkills = [
+  { name: "Problem-Solving", level: 90 },
+  { name: "Teamwork & Collaboration", level: 85 },
+  { name: "Effective Communication", level: 80 },
+  { name: "Leadership & Coordination", level: 75 },
+  { name: "Analytical Thinking", level: 88 },
+  { name: "Adaptability & Flexibility", level: 85 },
+];
 
-  const softSkills = [
-    { name: "Problem Solving", level: 90 },
-    { name: "Teamwork", level: 85 },
-    { name: "Communication", level: 80 },
-    { name: "Leadership", level: 75 },
-    { name: "Analytical Thinking", level: 88 },
-    { name: "Adaptability", level: 85 },
-  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
