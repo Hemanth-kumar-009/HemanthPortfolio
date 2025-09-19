@@ -26,12 +26,12 @@ const AboutSection = () => {
     {
       icon: GraduationCap,
       title: "Education",
-      description: "B.Tech in Electronics & Communication Engineering",
+      description: "B.Tech in Electronics & Communication Engineering,persuing final year",
     },
     {
       icon: Heart,
       title: "Passion",
-      description: "IoT, Embedded Systems, and Innovation",
+      description: "I am driven by curiosity and a passion for learning, always seeking to grow and improve.I believe in turning ideas into impact and challenges into opportunities.",
     },
     {
       icon: Target,
