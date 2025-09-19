@@ -44,7 +44,8 @@ const HeroSection = () => {
                 <img
                   src={heroPortrait}
                   alt="Profile"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center scale-110"
+                  style={{ objectPosition: '50% 35%' }}
                 />
               </div>
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20"></div>
