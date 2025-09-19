@@ -90,13 +90,12 @@ const HeroSection = () => {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            <Button className="btn-gradient">
+            <Button className="btn-interactive">
               <Download className="w-4 h-4 mr-2" />
               Download Resume
             </Button>
             <Button
-              variant="outline"
-              className="hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              className="btn-interactive bg-gradient-to-r from-accent via-primary to-secondary"
               onClick={() => scrollToNext()}
             >
               View My Work
