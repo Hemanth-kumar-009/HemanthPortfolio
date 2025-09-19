@@ -1,28 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/favicon-512x512.png" type="image/png">
-    <title>Your Name - Electronics & Communication Engineering Student | Portfolio</title>
-    <meta name="description" content="Portfolio of an Electronics & Communication Engineering student specializing in IoT, Embedded Systems, and innovative technology solutions. View my projects, skills, and experience." />
-    <meta name="author" content="Your Name" />
-    <meta name="keywords" content="Electronics Engineering, IoT, Embedded Systems, Arduino, Python, C Programming, Portfolio, Student" />
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polavaram Hemanth Kumar - Portfolio</title>
+    <meta name="description" content="Electronics & Communication Engineering Student passionate about IoT, Embedded Systems, and innovative technology solutions.">
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navigation" class="nav-transparent">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo text-gradient">Portfolio</div>
+                
+                <div class="nav-links desktop-nav">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#resume" class="nav-link">Resume</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                
+                <div class="nav-controls">
+                    <button id="theme-toggle" class="btn-icon animate-glow" aria-label="Toggle theme">
+                        <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="m12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42m12.72-12.72l1.42-1.42"></path>
+                        </svg>
+                        <svg class="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                    
+                    <button id="mobile-menu-toggle" class="btn-icon mobile-only" aria-label="Toggle menu">
+                        <svg class="menu-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="4" x2="20" y1="6" y2="6"></line>
+                            <line x1="4" x2="20" y1="12" y2="12"></line>
+                            <line x1="4" x2="20" y1="18" y2="18"></line>
+                        </svg>
+                        <svg class="close-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m18 6-12 12"></path>
+                            <path d="m6 6 12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div id="mobile-menu" class="mobile-menu">
+                <div class="mobile-nav-links">
+                    <a href="#home" class="mobile-nav-link">Home</a>
+                    <a href="#about" class="mobile-nav-link">About</a>
+                    <a href="#skills" class="mobile-nav-link">Skills</a>
+                    <a href="#projects" class="mobile-nav-link">Projects</a>
+                    <a href="#experience" class="mobile-nav-link">Experience</a>
+                    <a href="#resume" class="mobile-nav-link">Resume</a>
+                    <a href="#contact" class="mobile-nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    <meta property="og:title" content="Your Name - Electronics & Communication Engineering Student | Portfolio" />
-    <meta property="og:description" content="Portfolio showcasing projects in IoT, Embedded Systems, and Electronics Engineering. Passionate about innovative technology solutions." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-bg-elements">
+            <div class="float-element float-1"></div>
+            <div class="float-element float-2"></div>
+            <div class="float-element float-3"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-image">
+                    <div class="profile-wrapper">
+                        <img src="src/assets/hero-portrait.jpg" alt="Polavaram Hemanth Kumar" class="profile-img">
+                        <div class="profile-overlay"></div>
+                    </div>
+                </div>
+                
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Hi, I'm <span class="text-gradient">Polavaram Hemanth Kumar</span>
+                    </h1>
+                    <h2 class="hero-subtitle">Electronics & Communication Engineering Student</h2>
+                </div>
+                
+                <div class="hero-description">
+                    <p>Passionate about IoT, Embedded Systems, and innovative technology solutions. Building the future one circuit at a time.</p>
+                </div>
+                
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-interactive" onclick="downloadResume()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7,10 12,15 17,10"></polyline>
+                            <line x1="12" x2="12" y1="15" y2="3"></line>
+                        </svg>
+                        Download Resume
+                    </button>
+                    <button class="btn btn-secondary btn-interactive" onclick="scrollToSection('about')">View My Work</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <button onclick="scrollToSection('about')" class="scroll-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="m6 9 6 6 6-6"></path>
+                </svg>
+            </button>
+        </div>
+    </section>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:title" content="Your Name - Electronics & Communication Engineering Portfolio" />
-    <meta name="twitter:description" content="Explore my journey in Electronics Engineering, IoT projects, and embedded systems development." />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+    <!-- ... keep existing code (all other sections) -->
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <script src="script.js"></script>
+</body>
 </html>
