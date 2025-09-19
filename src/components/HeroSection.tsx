@@ -104,6 +104,7 @@ const HeroSection = () => {
           </div>
 
           {/* Social Links */}
+          {/*
           <div
             className={`flex justify-center space-x-6 transition-all duration-1000 delay-1100 ${
               isVisible
@@ -128,6 +129,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+      */}
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
