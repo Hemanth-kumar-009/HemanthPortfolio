@@ -82,8 +82,8 @@ const HeroSection = () => {
             </p>
           </div>
 
-           {/* CTA Buttons */}
-          { /*  <div
+          {/* CTA Buttons */}
+          <div
             className={`mb-12 flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 delay-900 ${
               isVisible
                 ? "opacity-100 translate-y-0"
@@ -101,10 +101,10 @@ const HeroSection = () => {
             >
               View My Work
             </Button>
-          </div> */}
+          </div>
 
           {/* Social Links */}
-          {/*   <div
+          <div
             className={`flex justify-center space-x-6 transition-all duration-1000 delay-1100 ${
               isVisible
                 ? "opacity-100 translate-y-0"
@@ -127,7 +127,7 @@ const HeroSection = () => {
             ))}
           </div>
         </div>
-      </div> */}
+      </div>
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
