@@ -104,7 +104,6 @@ const HeroSection = () => {
           </div>
 
           {/* Social Links */}
-          {/*
           <div
             className={`flex justify-center space-x-6 transition-all duration-1000 delay-1100 ${
               isVisible
@@ -126,7 +125,6 @@ const HeroSection = () => {
                 <Icon className="w-5 h-5" />
               </a>
             ))}
-            */}
           </div>
         </div>
       </div>
