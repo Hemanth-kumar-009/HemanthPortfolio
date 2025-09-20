@@ -371,47 +371,191 @@ notificationStyles.textContent = `
 `;
 document.head.appendChild(notificationStyles);
 
-// Download resume function (placeholder)
-function downloadResume() {
-    // This would typically trigger a file download
-    showNotification('Resume download started!', 'success');
-}
+// Enhanced Button Interactions
+function initializeButtonEffects() {
+    // Add ripple effect to buttons
+    const rippleButtons = document.querySelectorAll('.btn-ripple, .btn-primary, .btn-secondary');
+    rippleButtons.forEach(button => {
+        button.addEventListener('click', createRipple);
+    });
 
-// Preview resume function (placeholder)
-function previewResume() {
-    // This would typically open a modal or new tab with resume preview
-    showNotification('Resume preview feature coming soon!', 'info');
-}
-
-// Intersection Observer for scroll animations (fallback for browsers without GSAP)
-function initializeFallbackAnimations() {
-    if (typeof gsap === 'undefined') {
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all elements that should animate
-        const animatedElements = document.querySelectorAll('.section-header, .highlight-card, .project-card, .timeline-item, .skill-item');
-        animatedElements.forEach(el => {
-            el.classList.add('animate-on-scroll');
-            observer.observe(el);
+    // Add magnetic effect to buttons
+    const magneticButtons = document.querySelectorAll('.btn-magnetic, .btn-primary');
+    magneticButtons.forEach(button => {
+        button.addEventListener('mouseenter', function(e) {
+            this.style.transform = 'translateY(-3px) scale(1.02)';
         });
-    }
+        
+        button.addEventListener('mouseleave', function(e) {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+        
+        button.addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            this.style.transform = `translateY(-3px) scale(1.02) translate(${x * 0.1}px, ${y * 0.1}px)`;
+        });
+    });
+
+    // Add loading states to form submit buttons
+    const formButtons = document.querySelectorAll('button[type="submit"]');
+    formButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            if (this.closest('form').checkValidity()) {
+                this.classList.add('btn-loading');
+                this.disabled = true;
+                
+                // Remove loading state after 3 seconds (simulated)
+                setTimeout(() => {
+                    this.classList.remove('btn-loading');
+                    this.disabled = false;
+                }, 3000);
+            }
+        });
+    });
+
+    // Add pulse effect to important buttons
+    const pulseButtons = document.querySelectorAll('.hero-buttons .btn-primary');
+    pulseButtons.forEach(button => {
+        button.classList.add('btn-pulse');
+    });
 }
 
-// Initialize fallback animations if GSAP is not available
-if (typeof gsap === 'undefined') {
-    document.addEventListener('DOMContentLoaded', initializeFallbackAnimations);
+// Create ripple effect
+function createRipple(event) {
+    const button = event.currentTarget;
+    const circle = document.createElement('span');
+    const diameter = Math.max(button.clientWidth, button.clientHeight);
+    const radius = diameter / 2;
+
+    const rect = button.getBoundingClientRect();
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${event.clientX - rect.left - radius}px`;
+    circle.style.top = `${event.clientY - rect.top - radius}px`;
+    circle.classList.add('ripple');
+
+    // Remove any existing ripple
+    const ripple = button.getElementsByClassName('ripple')[0];
+    if (ripple) {
+        ripple.remove();
+    }
+
+    button.appendChild(circle);
+    
+    // Remove ripple after animation
+    setTimeout(() => {
+        circle.remove();
+    }, 600);
 }
+
+// Enhanced download resume function with better UX
+function downloadResume() {
+    const button = event.target.closest('.btn');
+    const originalText = button.innerHTML;
+    
+    // Add loading state
+    button.classList.add('btn-loading');
+    button.innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7,10 12,15 17,10"></polyline>
+            <line x1="12" x2="12" y1="15" y2="3"></line>
+        </svg>
+        Preparing Download...
+    `;
+    
+    // Simulate download process
+    setTimeout(() => {
+        button.classList.remove('btn-loading');
+        button.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 6L9 17l-5-5"></path>
+            </svg>
+            Downloaded!
+        `;
+        button.classList.add('btn-success');
+        
+        showNotification('Resume downloaded successfully!', 'success');
+        
+        // Reset button after 3 seconds
+        setTimeout(() => {
+            button.innerHTML = originalText;
+            button.classList.remove('btn-success');
+        }, 3000);
+    }, 2000);
+}
+
+// Enhanced preview resume function
+function previewResume() {
+    const button = event.target.closest('.btn');
+    const originalText = button.innerHTML;
+    
+    button.classList.add('btn-loading');
+    button.innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+        Loading Preview...
+    `;
+    
+    setTimeout(() => {
+        button.classList.remove('btn-loading');
+        button.innerHTML = originalText;
+        showNotification('Resume preview feature coming soon!', 'info');
+    }, 1500);
+}
+
+// Enhanced scroll to top with smooth animation
+function scrollToTop() {
+    const button = document.querySelector('.scroll-to-top');
+    if (button) {
+        button.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+            button.style.transform = 'scale(1)';
+        }, 150);
+    }
+    
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Add floating action button for scroll to top
+function addFloatingActionButton() {
+    const fab = document.createElement('button');
+    fab.className = 'btn-fab';
+    fab.innerHTML = `
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m18 15-6-6-6 6"></path>
+        </svg>
+    `;
+    fab.onclick = scrollToTop;
+    fab.style.opacity = '0';
+    fab.style.transform = 'scale(0)';
+    
+    document.body.appendChild(fab);
+    
+    // Show/hide FAB based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            fab.style.opacity = '1';
+            fab.style.transform = 'scale(1)';
+        } else {
+            fab.style.opacity = '0';
+            fab.style.transform = 'scale(0)';
+        }
+    });
+}
+
+// Initialize all button effects
+document.addEventListener('DOMContentLoaded', function() {
+    initializeButtonEffects();
+    addFloatingActionButton();
+});
 
 // Expose functions to global scope for HTML onclick handlers
 window.scrollToSection = scrollToSection;
